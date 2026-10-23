@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light}[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Qualify by ALDEMARINE</title>
+<meta name="description" content="Подготовка пакетов предквалификации для подрядчиков ТШО, NCOC и KPO.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+/* Layout: left-aligned editorial column; hero pairs a headline with a folder-tab "dossier" of what each operator asks for.
+   Palette comes from the ALDEMARINE logo (navy + cyan); a cool paper neutral leans toward the navy. */
+:root {
+  --bg: #F3F7FA;
+  --surface: #FFFFFF;
+  --ink: #0C2338;
+  --muted: #526679;
+  --line: #D3DEE7;
+  --navy: #00569B;
+  --cyan: #0089BF;
+  --cyan-soft: #E1F2FA;
+  --amber: #A55F00;
+  --amber-soft: #FBEFD9;
+  --f-display: "Source Serif 4", "Times New Roman", Georgia, serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-code: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #09182A; --surface: #0F2339; --ink: #E7EFF6; --muted: #93A8BA; --line: #22405C;
+    --navy: #5BB0EC; --cyan: #3CC0F0; --cyan-soft: #0E3249; --amber: #F0B45A; --amber-soft: #3A2C10;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #09182A; --surface: #0F2339; --ink: #E7EFF6; --muted: #93A8BA; --line: #22405C;
+  --navy: #5BB0EC; --cyan: #3CC0F0; --cyan-soft: #0E3249; --amber: #F0B45A; --amber-soft: #3A2C10;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.6; margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--navy); }
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; border-radius: 3px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+p { margin: 0; }
+
+/* header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; }
+.mark { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: var(--ink); }
+.mark b { font-family: var(--f-display); font-size: 28px; font-weight: 600; letter-spacing: 0.01em; color: var(--navy); }
+.mark span { font-size: 13px; color: var(--muted); }
+.top nav { display: flex; align-items: center; gap: 18px; font-size: 15px; }
+.top nav a.link { color: var(--ink); text-decoration: none; }
+.top nav a.link:hover { color: var(--navy); text-decoration: underline; }
+.lang { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.lang button { font: inherit; font-size: 14px; background: transparent; color: var(--muted); border: 0; padding: 4px 10px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--navy); color: var(--bg); }
+@media (max-width: 640px) { .top nav a.link { display: none; } }
+
+/* hero */
+.hero { padding-block: 40px 64px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px; align-items: start; }
+.hero h1 { font-size: clamp(34px, 5vw, 54px); }
+.hero .lead { margin-top: 22px; font-size: 19px; color: var(--muted); max-width: 34em; }
+.cta-row { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.btn { display: inline-block; font: inherit; font-weight: 500; font-size: 16px; padding: 12px 22px; border-radius: 6px; background: var(--navy); color: var(--bg); text-decoration: none; border: 0; cursor: pointer; }
+.btn:hover { filter: brightness(1.1); }
+.btn.ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
+.note { margin-top: 22px; font-size: 14px; color: var(--muted); max-width: 32em; }
+@media (max-width: 900px) { .hero { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
+
+/* dossier */
+.dossier { min-width: 0; }
+.tabs { display: flex; gap: 4px; padding-left: 8px; }
+.tabs button { font: inherit; font-family: var(--f-display); font-weight: 600; font-size: 17px; color: var(--muted); background: var(--bg); border: 1px solid var(--line); border-bottom: 0; border-radius: 8px 8px 0 0; padding: 9px 20px 8px; cursor: pointer; position: relative; top: 1px; }
+.tabs button[aria-selected="true"] { background: var(--surface); color: var(--navy); border-color: var(--line); z-index: 1; }
+.sheet { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px 24px 18px; }
+.sheet h3 { font-size: 15px; font-family: var(--f-body); font-weight: 500; color: var(--muted); margin-bottom: 8px; }
+.items { list-style: none; margin: 0; padding: 0; }
+.items li { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
+.items li:first-child { border-top: 0; }
+.kind { align-self: start; justify-self: start; font-family: var(--f-code); font-size: 12px; padding: 3px 8px; border-radius: 4px; background: var(--cyan-soft); color: var(--navy); }
+.kind.audit { background: var(--amber-soft); color: var(--amber); }
+.items b { font-weight: 600; display: block; }
+.items span.d { font-size: 15px; color: var(--muted); }
+.common { margin-top: 6px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 14px; color: var(--muted); }
+@media (max-width: 520px) { .items li { grid-template-columns: minmax(0, 1fr); gap: 6px; } .sheet { padding: 18px 16px 14px; } .tabs button { padding: 9px 14px 8px; } }
+
+/* sections */
+section.band { padding-block: 64px; border-top: 1px solid var(--line); }
+section.band.alt { background: var(--surface); }
+.h2 { font-size: clamp(28px, 3.6vw, 38px); max-width: 18em; }
+.sub { margin-top: 14px; color: var(--muted); max-width: 38em; }
+
+.pk { margin-top: 36px; border-top: 2px solid var(--ink); }
+.pk > div { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) minmax(0, 3fr); gap: 32px; padding-block: 26px; border-bottom: 1px solid var(--line); }
+.pk h3 { font-size: 24px; }
+.pk p { color: var(--muted); }
+.pk .out { font-size: 14px; }
+.pk .out b { display: block; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+@media (max-width: 820px) { .pk > div { grid-template-columns: minmax(0, 1fr); gap: 10px; } }
+
+.steps { margin: 36px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; counter-reset: s; }
+.steps li { counter-increment: s; border-top: 3px solid var(--navy); padding-top: 14px; }
+.steps li::before { content: counter(s); font-family: var(--f-display); font-size: 30px; color: var(--navy); display: block; line-height: 1; margin-bottom: 8px; }
+.steps b { display: block; font-weight: 600; margin-bottom: 4px; }
+.steps span { font-size: 15px; color: var(--muted); }
+@media (max-width: 860px) { .steps { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+@media (max-width: 480px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+
+.limits { margin-top: 32px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.limits h3 { font-size: 20px; margin-bottom: 8px; }
+.limits p { color: var(--muted); font-size: 16px; }
+@media (max-width: 820px) { .limits { grid-template-columns: minmax(0, 1fr); gap: 22px; } }
+
+details { border-top: 1px solid var(--line); padding-block: 16px; }
+details:last-of-type { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; font-weight: 500; font-size: 18px; list-style-position: outside; }
+details p { margin-top: 10px; color: var(--muted); max-width: 44em; }
+.faq { margin-top: 30px; max-width: 800px; }
+
+.contact { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 48px; align-items: start; }
+.mailbox { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px 24px; }
+.mailbox label { font-size: 14px; color: var(--muted); display: block; margin-bottom: 6px; }
+.addr { font-family: var(--f-code); font-size: 17px; word-break: break-all; display: block; padding: 10px 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; user-select: all; }
+.copied { margin-top: 10px; font-size: 14px; color: var(--muted); min-height: 1.4em; }
+.mailbox ul { margin: 14px 0 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
+@media (max-width: 820px) { .contact { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
+
+footer { border-top: 1px solid var(--line); padding-block: 36px 48px; font-size: 14px; color: var(--muted); }
+footer .wrap { display: grid; gap: 10px; }
+</style>
+</head>
+<body>
+
+
+<header class="wrap top">
+  <a class="mark" href="#top"><b>Qualify</b><span data-ru="от ТОО ALDEMARINE" data-en="by ALDEMARINE LLP">от ТОО ALDEMARINE</span></a>
+  <nav aria-label="Разделы">
+    <a class="link" href="#packages" data-ru="Услуги" data-en="Services">Услуги</a>
+    <a class="link" href="#process" data-ru="Как работаем" data-en="Process">Как работаем</a>
+    <a class="link" href="#faq" data-ru="Вопросы" data-en="FAQ">Вопросы</a>
+    <span class="lang" role="group" aria-label="Язык / Language">
+      <button type="button" id="l-ru" aria-pressed="true">RU</button>
+      <button type="button" id="l-en" aria-pressed="false">EN</button>
+    </span>
+  </nav>
+</header>
+
+<main id="top">
+<div class="wrap hero">
+  <div>
+    <h1 data-ru="Допуск к ТШО, NCOC и KPO начинается с документов" data-en="Access to TCO, NCOC and KPO starts with the paperwork">Допуск к ТШО, NCOC и KPO начинается с документов</h1>
+    <p class="lead" data-ru="Проверяем документацию вашей компании и готовим пакет предквалификации для подрядчиков и поставщиков нефтегаза Казахстана." data-en="We review your company's documentation and prepare the prequalification package for oil and gas contractors and suppliers in Kazakhstan.">Проверяем документацию вашей компании и готовим пакет предквалификации для подрядчиков и поставщиков нефтегаза Казахстана.</p>
+    <div class="cta-row">
+      <a class="btn" href="#contact" data-ru="Задать вопрос" data-en="Ask a question">Задать вопрос</a>
+      <a class="btn ghost" href="#packages" data-ru="Что входит в услугу" data-en="What the service covers">Что входит в услугу</a>
+    </div>
+    <p class="note" data-ru="Qualify независим от ТШО, NCOC и KPO и не гарантирует допуск. Решение принимает заказчик." data-en="Qualify is independent of TCO, NCOC and KPO and does not guarantee approval. The operator makes the decision.">Qualify независим от ТШО, NCOC и KPO и не гарантирует допуск. Решение принимает заказчик.</p>
+  </div>
+
+  <div class="dossier">
+    <div class="tabs" role="tablist" aria-label="Заказчик">
+      <button type="button" role="tab" id="t-tco" aria-selected="true" aria-controls="sheet">ТШО</button>
+      <button type="button" role="tab" id="t-ncoc" aria-selected="false" aria-controls="sheet">NCOC</button>
+      <button type="button" role="tab" id="t-kpo" aria-selected="false" aria-controls="sheet">KPO</button>
+    </div>
+    <div class="sheet" id="sheet" role="tabpanel">
+      <h3 id="sheet-title"></h3>
+      <ul class="items" id="items"></ul>
+      <p class="common" id="common"></p>
+    </div>
+  </div>
+</div>
+
+<section class="band alt" id="packages">
+  <div class="wrap">
+    <h2 class="h2" data-ru="Три уровня работы, от проверки до готовой системы" data-en="Three levels of work, from a review to a working system">Три уровня работы, от проверки до готовой системы</h2>
+    <p class="sub" data-ru="Стоимость называем после ревизии, когда видим объём пробелов." data-en="We quote after the review, once we can see how many gaps there are.">Стоимость называем после ревизии, когда видим объём пробелов.</p>
+    <div class="pk">
+      <div>
+        <h3 data-ru="Ревизия документации" data-en="Documentation review">Ревизия документации</h3>
+        <p data-ru="Сравниваем ваши действующие документы с анкетами и требованиями заказчика: политики, процедуры, статистику безопасности, сертификаты, финансовые и учредительные документы." data-en="We compare your current documents with the operator's questionnaires and requirements: policies, procedures, safety statistics, certificates, financial and corporate records.">Сравниваем ваши действующие документы с анкетами и требованиями заказчика: политики, процедуры, статистику безопасности, сертификаты, финансовые и учредительные документы.</p>
+        <div class="out"><b data-ru="Результат" data-en="Result">Результат</b><span data-ru="Реестр пробелов и план закрытия" data-en="Gap register and closing plan">Реестр пробелов и план закрытия</span></div>
+      </div>
+      <div>
+        <h3 data-ru="Пакет предквалификации" data-en="Prequalification package">Пакет предквалификации</h3>
+        <p data-ru="Готовим профиль и анкету в базе Alash, анкету KPO, ответы на опросник CHESM для ТШО и комплект документов по охране труда, безопасности и окружающей среде." data-en="We prepare the Alash profile and questionnaire, the KPO vendor questionnaire, answers to TCO's CHESM questionnaire and the health, safety and environment document set.">Готовим профиль и анкету в базе Alash, анкету KPO, ответы на опросник CHESM для ТШО и комплект документов по охране труда, безопасности и окружающей среде.</p>
+        <div class="out"><b data-ru="Результат" data-en="Result">Результат</b><span data-ru="Комплект, готовый к подаче" data-en="A set ready to submit">Комплект, готовый к подаче</span></div>
+      </div>
+      <div>
+        <h3 data-ru="Система управления и ISO" data-en="Management system and ISO">Система управления и ISO</h3>
+        <p data-ru="Разрабатываем систему управления по ISO 9001, 14001 и 45001 и ведём компанию до аудита органа по сертификации. Сам аудит оплачивается органу сертификации отдельно." data-en="We build a management system to ISO 9001, 14001 and 45001 and guide the company up to the certification body's audit. The audit itself is paid to the certification body separately.">Разрабатываем систему управления по ISO 9001, 14001 и 45001 и ведём компанию до аудита органа по сертификации. Сам аудит оплачивается органу сертификации отдельно.</p>
+        <div class="out"><b data-ru="Результат" data-en="Result">Результат</b><span data-ru="Работающая система и записи" data-en="A working system with records">Работающая система и записи</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="process">
+  <div class="wrap">
+    <h2 class="h2" data-ru="Как проходит работа" data-en="How the work runs">Как проходит работа</h2>
+    <ol class="steps">
+      <li><b data-ru="Вопрос" data-en="Question">Вопрос</b><span data-ru="Вы пишете, какие работы выполняете и к какому заказчику хотите." data-en="You tell us what work you do and which operator you want.">Вы пишете, какие работы выполняете и к какому заказчику хотите.</span></li>
+      <li><b data-ru="Ревизия" data-en="Review">Ревизия</b><span data-ru="Получаем ваши документы и находим, чего не хватает." data-en="We take your documents and find what is missing.">Получаем ваши документы и находим, чего не хватает.</span></li>
+      <li><b data-ru="Подготовка" data-en="Preparation">Подготовка</b><span data-ru="Пишем и оформляем недостающее вместе с вашими специалистами." data-en="We write and format what is missing together with your specialists.">Пишем и оформляем недостающее вместе с вашими специалистами.</span></li>
+      <li><b data-ru="Подача и сопровождение" data-en="Submission and support">Подача и сопровождение</b><span data-ru="Вы подаёте пакет, мы отвечаем на замечания заказчика и обновляем документы." data-en="You submit the package; we answer the operator's comments and update the documents.">Вы подаёте пакет, мы отвечаем на замечания заказчика и обновляем документы.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <h2 class="h2" data-ru="Чего мы не делаем" data-en="What we do not do">Чего мы не делаем</h2>
+    <div class="limits">
+      <div><h3 data-ru="Не обещаем допуск" data-en="We do not promise approval">Не обещаем допуск</h3><p data-ru="Критерии оценки и решение остаются за ТШО, NCOC и KPO. Мы повышаем качество заявки и говорим заранее, чего в ней не хватает." data-en="The criteria and the decision stay with TCO, NCOC and KPO. We raise the quality of your submission and tell you in advance what it lacks.">Критерии оценки и решение остаются за ТШО, NCOC и KPO. Мы повышаем качество заявки и говорим заранее, чего в ней не хватает.</p></div>
+      <div><h3 data-ru="Не продаём место в базе" data-en="We do not sell a place in a database">Не продаём место в базе</h3><p data-ru="Регистрация в SEOI бесплатна, в Alash бесплатна для казахстанских компаний. Вы платите за подготовку документов, а не за включение." data-en="SEOI registration is free, and Alash is free for Kazakhstani companies. You pay for preparing documents, not for being included.">Регистрация в SEOI бесплатна, в Alash бесплатна для казахстанских компаний. Вы платите за подготовку документов, а не за включение.</p></div>
+      <div><h3 data-ru="Не рисуем несуществующее" data-en="We do not invent records">Не рисуем несуществующее</h3><p data-ru="Операторы проверяют работающую систему: статистику, обучение, аудиты. Задним числом мы такие записи не создаём." data-en="Operators check a working system: statistics, training, audits. We do not create such records after the fact.">Операторы проверяют работающую систему: статистику, обучение, аудиты. Задним числом мы такие записи не создаём.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <h2 class="h2" data-ru="Частые вопросы" data-en="Common questions">Частые вопросы</h2>
+    <div class="faq">
+      <details><summary data-ru="Хватит ли одних документов, чтобы пройти предквалификацию?" data-en="Are documents alone enough to pass prequalification?">Хватит ли одних документов, чтобы пройти предквалификацию?</summary><p data-ru="Нет. Заказчики оценивают, как у вас работает система безопасности и качества, и могут проверить это аудитом. Документы показывают эту систему, но не заменяют её. Если в компании чего-то нет, мы скажем об этом на ревизии." data-en="No. Operators assess how your safety and quality systems work and may verify it by audit. Documents show the system but do not replace it. If something is missing in your company, we say so during the review.">Нет. Заказчики оценивают, как у вас работает система безопасности и качества, и могут проверить это аудитом. Документы показывают эту систему, но не заменяют её. Если в компании чего-то нет, мы скажем об этом на ревизии.</p></details>
+      <details><summary data-ru="Что такое Alash и нужна ли регистрация там?" data-en="What is Alash and do I need to register there?">Что такое Alash и нужна ли регистрация там?</summary><p data-ru="Alash — единая база поставщиков нефтегаза Казахстана, через которую вас видят ТШО, NCOC и KPO. Регистрация добровольная, но операторы её рекомендуют. Для KPO дополнительно заполняется собственная анкета." data-en="Alash is the common supplier database for Kazakhstan's oil and gas operators, through which TCO, NCOC and KPO can see you. Registration is voluntary, but the operators recommend it. KPO also requires its own questionnaire.">Alash — единая база поставщиков нефтегаза Казахстана, через которую вас видят ТШО, NCOC и KPO. Регистрация добровольная, но операторы её рекомендуют. Для KPO дополнительно заполняется собственная анкета.</p></details>
+      <details><summary data-ru="Нужны ли ISO-сертификаты?" data-en="Do I need ISO certificates?">Нужны ли ISO-сертификаты?</summary><p data-ru="Зависит от вида работ. Операторы ценят ISO 9001, 14001 и 45001, а отсутствие нужных сертификатов называют частой причиной отказа. На ревизии мы определим, какие нужны именно вам." data-en="It depends on the type of work. Operators value ISO 9001, 14001 and 45001, and name missing certificates as a common reason for rejection. During the review we determine which ones you need.">Зависит от вида работ. Операторы ценят ISO 9001, 14001 и 45001, а отсутствие нужных сертификатов называют частой причиной отказа. На ревизии мы определим, какие нужны именно вам.</p></details>
+      <details><summary data-ru="Как вы обращаетесь с документами компании?" data-en="How do you handle company documents?">Как вы обращаетесь с документами компании?</summary><p data-ru="Документы клиента используются только для его заявки и не передаются третьим лицам. Соглашение о конфиденциальности подписываем по запросу." data-en="Client documents are used only for the client's own submission and are not passed to third parties. We sign a confidentiality agreement on request.">Документы клиента используются только для его заявки и не передаются третьим лицам. Соглашение о конфиденциальности подписываем по запросу.</p></details>
+      <details><summary data-ru="Сколько это стоит?" data-en="How much does it cost?">Сколько это стоит?</summary><p data-ru="Зависит от объёма пробелов и выбранного уровня работы. Мы называем цену после ревизии, до начала подготовки." data-en="It depends on the size of the gaps and the level of work you choose. We quote after the review, before preparation starts.">Зависит от объёма пробелов и выбранного уровня работы. Мы называем цену после ревизии, до начала подготовки.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="contact">
+  <div class="wrap contact">
+    <div>
+      <h2 class="h2" data-ru="Напишите один вопрос" data-en="Send us one question">Напишите один вопрос</h2>
+      <p class="sub" data-ru="Укажите, какие работы или товары вы предлагаете и к какому заказчику хотите попасть. Ответим по существу и скажем, с чего начать." data-en="Tell us what work or goods you offer and which operator you want to reach. We will answer directly and say where to start.">Укажите, какие работы или товары вы предлагаете и к какому заказчику хотите попасть. Ответим по существу и скажем, с чего начать.</p>
+    </div>
+    <div class="mailbox">
+      <label for="addr" data-ru="Адрес для вопросов" data-en="Address for questions">Адрес для вопросов</label>
+      <span class="addr" id="addr">info@qualify.vnemo.co</span>
+      <div class="cta-row"><button class="btn" type="button" id="copy" data-ru="Скопировать адрес" data-en="Copy address">Скопировать адрес</button></div>
+      <p class="copied" id="copied" role="status"></p>
+      <ul>
+        <li data-ru="Название компании и вид работ" data-en="Company name and type of work">Название компании и вид работ</li>
+        <li data-ru="Заказчик: ТШО, NCOC или KPO" data-en="Operator: TCO, NCOC or KPO">Заказчик: ТШО, NCOC или KPO</li>
+        <li data-ru="Что уже есть: ISO, политики, статистика" data-en="What you already have: ISO, policies, statistics">Что уже есть: ISO, политики, статистика</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Qualify</b> · <span data-ru="ТОО ALDEMARINE, Казахстан" data-en="ALDEMARINE LLP, Kazakhstan">ТОО ALDEMARINE, Казахстан</span></p>
+    <p data-ru="Qualify не связан с Tengizchevroil (ТШО), North Caspian Operating Company (NCOC) и Karachaganak Petroleum Operating (KPO). Названия компаний используются только для указания заказчика, к которому готовится пакет. Сведения о процедурах взяты из открытых источников и могут меняться; актуальные требования публикуют сами операторы." data-en="Qualify is not affiliated with Tengizchevroil (TCO), North Caspian Operating Company (NCOC) or Karachaganak Petroleum Operating (KPO). Company names are used only to identify the operator a package is prepared for. Procedure details come from public sources and may change; current requirements are published by the operators themselves.">Qualify не связан с Tengizchevroil (ТШО), North Caspian Operating Company (NCOC) и Karachaganak Petroleum Operating (KPO). Названия компаний используются только для указания заказчика, к которому готовится пакет. Сведения о процедурах взяты из открытых источников и могут меняться; актуальные требования публикуют сами операторы.</p>
+  </div>
+</footer>
+
+<script>
+var DATA = {
+  tco: {
+    ru: { title: "ТШО: что спрашивают", items: [
+      ["Форма", "SEOI", "Самовыдвижение на портале ТШО. Бесплатно, не является приглашением к тендеру."],
+      ["Аудит", "CHESM", "Квалификация по охране труда и безопасности для работ с рисками. Проходится до начала работ на объектах."],
+      ["Документы", "Казахстанское содержание", "Вес местного содержания задаётся отдельно в каждом тендере."],
+      ["Сертификат", "ISO и API", "Отсутствие нужных сертификатов ТШО называет частой причиной отказа."]
+    ], common: "Общее для всех заказчиков: база Alash и оценка системы управления по IOGP 423." },
+    en: { title: "TCO: what is asked", items: [
+      ["Form", "SEOI", "Self-nomination on TCO's portal. Free, and not an invitation to bid."],
+      ["Audit", "CHESM", "Health and safety qualification for work with risk. Completed before work starts at the sites."],
+      ["Documents", "Kazakhstani content", "The weight of local content is set separately in each tender."],
+      ["Certificate", "ISO and API", "TCO names missing certificates as a common reason for rejection."]
+    ], common: "Common to all operators: the Alash database and a management-system assessment based on IOGP 423." }
+  },
+  ncoc: {
+    ru: { title: "NCOC: что спрашивают", items: [
+      ["Форма", "Регистрация в Alash", "Попадание в базу рыночной информации. Это ещё не квалификация."],
+      ["Аудит", "Оценка под вид работ", "Назначается инженер по качеству, при необходимости проводится визит на объекты."],
+      ["Сертификат", "ISO, API, ASME", "Ценятся ISO 9001, 14001 и 45001, а также отраслевые сертификаты на продукцию."],
+      ["Документы", "Местное содержание", "Для подтверждения используется портал локального содержания NCOC."]
+    ], common: "Общее для всех заказчиков: база Alash и оценка системы управления по IOGP 423." },
+    en: { title: "NCOC: what is asked", items: [
+      ["Form", "Alash registration", "Entry into the market-information database. This is not yet a qualification."],
+      ["Audit", "Assessment by scope", "A quality engineer is assigned and, where needed, a site visit takes place."],
+      ["Certificate", "ISO, API, ASME", "ISO 9001, 14001 and 45001 are valued, along with industry product certificates."],
+      ["Documents", "Local content", "NCOC's local content portal is used for confirmation."]
+    ], common: "Common to all operators: the Alash database and a management-system assessment based on IOGP 423." }
+  },
+  kpo: {
+    ru: { title: "KPO: что спрашивают", items: [
+      ["Форма", "Анкета поставщика", "Excel-анкета предварительной оценки и документы. Не более 10 кодов по основной деятельности."],
+      ["Документы", "Schedule D", "Минимальные требования по охране труда, безопасности и окружающей среде для подрядчиков. Свой вариант для работ с низким и со средним или высоким риском."],
+      ["Документы", "План HSE и отчётность", "План до мобилизации, ежемесячная статистика, отчёт о расследовании инцидента в течение семи дней."],
+      ["Форма", "Регистрация в Alash", "Параллельный путь для поставщиков, которых ищут через общую базу."]
+    ], common: "Общее для всех заказчиков: база Alash и оценка системы управления по IOGP 423." },
+    en: { title: "KPO: what is asked", items: [
+      ["Form", "Vendor questionnaire", "An Excel preliminary assessment questionnaire with documents. No more than 10 codes for your core activity."],
+      ["Documents", "Schedule D", "Minimum health, safety and environment requirements for contractors. Separate versions for low-risk and for medium or high-risk work."],
+      ["Documents", "HSE plan and reporting", "A plan before mobilisation, monthly statistics, and an incident investigation report within seven days."],
+      ["Form", "Alash registration", "A parallel route for suppliers searched through the common database."]
+    ], common: "Common to all operators: the Alash database and a management-system assessment based on IOGP 423." }
+  }
+};
+var lang = "ru", tab = "tco";
+var KIND_CLASS = { "Аудит": "audit", "Audit": "audit" };
+
+function renderSheet() {
+  var d = DATA[tab][lang];
+  document.getElementById("sheet-title").textContent = d.title;
+  var ul = document.getElementById("items");
+  ul.innerHTML = "";
+  d.items.forEach(function (it) {
+    var li = document.createElement("li");
+    var k = document.createElement("span");
+    k.className = "kind" + (KIND_CLASS[it[0]] ? " " + KIND_CLASS[it[0]] : "");
+    k.textContent = it[0];
+    var box = document.createElement("div");
+    var b = document.createElement("b"); b.textContent = it[1];
+    var s = document.createElement("span"); s.className = "d"; s.textContent = it[2];
+    box.appendChild(b); box.appendChild(s);
+    li.appendChild(k); li.appendChild(box);
+    ul.appendChild(li);
+  });
+  document.getElementById("common").textContent = d.common;
+}
+function setTab(t) {
+  tab = t;
+  ["tco", "ncoc", "kpo"].forEach(function (x) {
+    document.getElementById("t-" + x).setAttribute("aria-selected", x === t ? "true" : "false");
+  });
+  renderSheet();
+}
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.getElementById("l-ru").setAttribute("aria-pressed", l === "ru" ? "true" : "false");
+  document.getElementById("l-en").setAttribute("aria-pressed", l === "en" ? "true" : "false");
+  var nodes = document.querySelectorAll("[data-ru]");
+  for (var i = 0; i < nodes.length; i++) nodes[i].textContent = nodes[i].getAttribute("data-" + l);
+  renderSheet();
+}
+["tco", "ncoc", "kpo"].forEach(function (x) {
+  document.getElementById("t-" + x).addEventListener("click", function () { setTab(x); });
+});
+document.getElementById("l-ru").addEventListener("click", function () { setLang("ru"); });
+document.getElementById("l-en").addEventListener("click", function () { setLang("en"); });
+document.getElementById("copy").addEventListener("click", function () {
+  var el = document.getElementById("addr"), out = document.getElementById("copied");
+  var msg = function (ok) { out.textContent = ok ? (lang === "ru" ? "Адрес скопирован." : "Address copied.") : (lang === "ru" ? "Выделите адрес и скопируйте вручную." : "Select the address and copy it manually."); };
+  try {
+    navigator.clipboard.writeText(el.textContent).then(function () { msg(true); }, function () {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); msg(false);
+    });
+  } catch (e) { msg(false); }
+});
+renderSheet();
+</script>
+
+</body>
+</html>
